@@ -3,6 +3,15 @@ name = "combatmaster-hacks--org"
 compatibility_date = "2026-01-01"
 main = "src/worker.ts"
 
+# Auto-provision DNS + TLS for the live site (zone must be in this Cloudflare account)
+[[routes]]
+pattern = "combatmasterhacks.org"
+custom_domain = true
+
+[[routes]]
+pattern = "www.combatmasterhacks.org"
+custom_domain = true
+
 [assets]
 directory = "./dist"
 binding = "ASSETS"
