@@ -1,5 +1,5 @@
 # CI Workers Builds project name (repo: combatmastercheats)
-name = "combatmasterhacks"
+name = "combatmaster-hacks--org"
 compatibility_date = "2026-01-01"
 main = "src/worker.ts"
 

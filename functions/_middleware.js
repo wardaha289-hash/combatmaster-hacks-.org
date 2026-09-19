@@ -26,7 +26,8 @@ const LEGACY_HOSTS = new Set([
 	'www.warzonescheats.xyz',
 ]);
 
-// Keep in sync with public/_redirects (which preserves query strings by default, as we do below).
+// Cannibal redirects: src/data/cannibal-redirects.json (Worker on deploy; this file for Pages middleware).
+// Legacy path 301s below stay in sync with public/_redirects where duplicated.
 const PATH_REDIRECTS = {
 	'/sitemap-0.xml': '/sitemap.xml',
 	'/sitemap-index.xml': '/sitemap.xml',
