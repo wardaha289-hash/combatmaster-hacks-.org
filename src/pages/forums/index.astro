@@ -1,0 +1,92 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ForumThreadGrid from '../../components/ForumThreadGrid.astro';
+import { forumIndexPath, forumThreads } from '../../data/forums';
+import { siteConfig } from '../../data/site';
+import { getSelfHreflangAlternates } from '../../data/i18n/routing';
+import { getT } from '../../i18n/server';
+
+const t = getT('en');
+const canonicalPath = forumIndexPath;
+
+const collectionSchema = {
+	'@type': 'CollectionPage',
+	'@id': `${siteConfig.url}${canonicalPath}#collection`,
+	name: t('forums.h1'),
+	description: t('forums.intro'),
+	url: `${siteConfig.url}${canonicalPath}`,
+	mainEntity: {
+		'@type': 'ItemList',
+		itemListElement: forumThreads.map((thread, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			url: `${siteConfig.url}/forums/${thread.slug}/`,
+			name: thread.title,
+		})),
+	},
+};
+---
+
+<Layout
+	title={t('forums.title')}
+	description={t('forums.intro')}
+	canonicalPath={canonicalPath}
+	breadcrumbs={[
+		{ label: 'Home', href: '/' },
+		{ label: 'Forums' },
+	]}
+	hreflangAlternates={getSelfHreflangAlternates(canonicalPath)}
+	extraGraph={[collectionSchema]}
+>
+	<Navbar locale="en" />
+	<main class="forums-page">
+		<div class="shell forums-page__inner">
+			<header class="forums-page__hero">
+				<p class="forums-page__eyebrow">{t('forums.eyebrow')}</p>
+				<h1>{t('forums.h1')}</h1>
+				<p class="forums-page__intro">{t('forums.intro')}</p>
+			</header>
+			<ForumThreadGrid threads={forumThreads} locale="en" />
+		</div>
+	</main>
+	<SiteFooter locale="en" />
+</Layout>
+
+<style>
+	.forums-page {
+		padding-block: clamp(2rem, 4vw, 3rem) clamp(3rem, 5vw, 4rem);
+	}
+
+	.forums-page__hero {
+		margin-bottom: 1.75rem;
+		max-width: 40rem;
+	}
+
+	.forums-page__eyebrow {
+		margin: 0 0 0.5rem;
+		font-size: 0.6875rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--magenta-soft);
+	}
+
+	.forums-page__hero h1 {
+		margin: 0 0 0.75rem;
+		font-family: var(--font-display);
+		font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+		color: var(--ink);
+	}
+
+	.forums-page__intro {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: var(--ink-muted);
+	}
+</style>

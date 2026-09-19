@@ -1,0 +1,157 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import { forumIndexPath, forumThreads, getForumPath } from '../../../data/forums';
+import { siteConfig } from '../../../data/site';
+import { getSelfHreflangAlternates } from '../../../data/i18n/routing';
+import { getT } from '../../../i18n/server';
+
+export function getStaticPaths() {
+	return forumThreads.map((thread) => ({
+		params: { slug: thread.slug },
+		props: { thread },
+	}));
+}
+
+const { thread } = Astro.props;
+const t = getT('en');
+const canonicalPath = getForumPath(thread.slug);
+const categoryLabel = t(`homeForums.categories.${thread.category}`);
+---
+
+<Layout
+	title={`${thread.title} | Forums`}
+	description={thread.description}
+	canonicalPath={canonicalPath}
+	breadcrumbs={[
+		{ label: 'Home', href: '/' },
+		{ label: 'Forums', href: forumIndexPath },
+		{ label: thread.title },
+	]}
+	hreflangAlternates={getSelfHreflangAlternates(canonicalPath)}
+>
+	<Navbar locale="en" />
+	<main class="forum-thread shell">
+		<nav class="forum-thread__crumb" aria-label="Breadcrumb">
+			<a href="/">Home</a>
+			<span aria-hidden="true">/</span>
+			<a href={forumIndexPath}>Forums</a>
+		</nav>
+		<p class={`forum-thread__cat forum-thread__cat--${thread.category}`}>{categoryLabel}</p>
+		<h1>{thread.title}</h1>
+		<p class="forum-thread__lede">{thread.description}</p>
+		<div class="forum-thread__body">
+			{thread.paragraphs.map((p) => <p>{p}</p>)}
+		</div>
+		{
+			thread.relatedLinks && thread.relatedLinks.length > 0 && (
+				<aside class="forum-thread__related">
+					<h2>Related pages</h2>
+					<ul>
+						{thread.relatedLinks.map((link) => (
+							<li>
+								<a href={link.href}>{link.label}</a>
+							</li>
+						))}
+					</ul>
+				</aside>
+			)
+		}
+	</main>
+	<SiteFooter locale="en" />
+</Layout>
+
+<style>
+	.forum-thread {
+		padding-block: clamp(2rem, 4vw, 3rem) clamp(3rem, 5vw, 4rem);
+		max-width: 42rem;
+	}
+
+	.forum-thread__crumb {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.35rem 0.5rem;
+		margin-bottom: 1rem;
+		font-size: 0.8125rem;
+		color: var(--ink-faint);
+	}
+
+	.forum-thread__crumb a {
+		color: var(--magenta-soft);
+		text-decoration: none;
+	}
+
+	.forum-thread__crumb a:hover {
+		color: var(--ink);
+	}
+
+	.forum-thread__cat {
+		display: inline-block;
+		margin: 0 0 0.75rem;
+		font-size: 0.6875rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+	}
+
+	.forum-thread h1 {
+		margin: 0 0 0.85rem;
+		font-family: var(--font-display);
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 800;
+		line-height: 1.15;
+		letter-spacing: -0.03em;
+		color: var(--ink);
+	}
+
+	.forum-thread__lede {
+		margin: 0 0 1.25rem;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: var(--ink-muted);
+	}
+
+	.forum-thread__body p {
+		margin: 0 0 1rem;
+		font-size: 0.9375rem;
+		line-height: 1.65;
+		color: var(--ink-muted);
+	}
+
+	.forum-thread__related {
+		margin-top: 2rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--line-soft);
+	}
+
+	.forum-thread__related h2 {
+		margin: 0 0 0.65rem;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+	}
+
+	.forum-thread__related ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.35rem;
+	}
+
+	.forum-thread__related a {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--magenta-soft);
+		text-decoration: none;
+	}
+
+	.forum-thread__related a:hover {
+		color: var(--ink);
+	}
+</style>

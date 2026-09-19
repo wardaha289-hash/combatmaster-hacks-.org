@@ -1,0 +1,66 @@
+---
+import { forumThreads } from '../data/forums';
+import ForumThreadGrid from './ForumThreadGrid.astro';
+import { getT } from '../i18n/server';
+import { defaultLocale, type LocaleCode } from '../data/i18n/locales';
+
+interface Props {
+	locale?: LocaleCode;
+}
+
+const locale = Astro.props.locale ?? defaultLocale;
+const t = getT(locale);
+---
+
+<section class="home-forums shell" aria-labelledby="home-forums-title">
+	<header class="home-forums__head">
+		<h2 id="home-forums-title">{t('homeForums.title')}</h2>
+		<a class="home-forums__all" href="/forums/">{t('homeForums.viewAll')} →</a>
+	</header>
+	<ForumThreadGrid threads={forumThreads} locale={locale} />
+</section>
+
+<style>
+	.home-forums {
+		padding-block: clamp(2rem, 4vw, 2.75rem);
+		border-top: 1px solid var(--line-soft);
+	}
+
+	.home-forums__head {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 1.35rem;
+	}
+
+	.home-forums__head h2 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+		color: var(--ink);
+	}
+
+	.home-forums__all {
+		flex-shrink: 0;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--magenta-soft);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	.home-forums__all:hover {
+		color: var(--ink);
+	}
+
+	@media (max-width: 560px) {
+		.home-forums__head {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>
