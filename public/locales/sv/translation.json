@@ -207,32 +207,26 @@
     "forums": "Forum"
   },
   "homeForums": {
-    "title": "Guides & community threads",
+    "title": "Forums by Topic",
     "readThread": "Read thread",
     "viewAll": "All forums",
     "categories": {
       "setup": "Setup",
       "buying": "Buying",
-      "troubleshooting": "Troubleshooting",
-      "updates": "Updates & patches",
+      "features": "Features",
       "gameplay": "Gameplay",
-      "features": "Features"
-    },
-    "categoryHints": {
-      "setup": "Install, performance, and first launch on Windows PC.",
-      "buying": "Plans, license delivery, and checkout help.",
-      "troubleshooting": "Fix loader errors, missing ESP, and overlay conflicts.",
-      "updates": "Patch day checklist and undetected status.",
-      "gameplay": "ESP, aimbot, and in-match settings for BR and TDM.",
-      "features": "Profiles, radar, recoil, and mod menu controls."
+      "troubleshooting": "Troubleshooting",
+      "updates": "Updates / Patches"
     }
   },
   "forums": {
     "title": "Combat Master Cheats Forums | Setup, Buying & Help",
     "eyebrow": "Forums",
-    "h1": "Guides by topic",
-    "intro": "Setup, buying, troubleshooting, patch updates, gameplay tips, and feature controls — organized by what you need.",
-    "categoryNavAria": "Forum categories"
+    "h1": "Forums by Topic",
+    "intro": "Setup guides, buying help, feature tuning, gameplay tips, troubleshooting, and patch-day notes for Combat Master cheats on Windows PC.",
+    "categoryNav": "Forum categories",
+    "threadSingular": "thread",
+    "threadPlural": "threads"
   },
   "images": {
     "hero": "Combat Master Hacks hero — ESP and aimbot overlay in Combat Master",

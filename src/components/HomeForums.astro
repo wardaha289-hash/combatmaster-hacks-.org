@@ -1,5 +1,5 @@
 ---
-import { forumThreads } from '../data/forums';
+import { getFeaturedForumThreads } from '../data/forums';
 import ForumThreadGrid from './ForumThreadGrid.astro';
 import { getT } from '../i18n/server';
 import { defaultLocale, type LocaleCode } from '../data/i18n/locales';
@@ -17,7 +17,7 @@ const t = getT(locale);
 		<h2 id="home-forums-title">{t('homeForums.title')}</h2>
 		<a class="home-forums__all" href="/forums/">{t('homeForums.viewAll')} →</a>
 	</header>
-	<ForumThreadGrid threads={forumThreads} locale={locale} />
+	<ForumThreadGrid threads={getFeaturedForumThreads()} locale={locale} />
 </section>
 
 <style>

@@ -90,11 +90,51 @@ const categoryLabel = t(`homeForums.categories.${thread.category}`);
 	.forum-thread__cat {
 		display: inline-block;
 		margin: 0 0 0.75rem;
+		padding: 0.25rem 0.6rem;
+		border-radius: 999px;
 		font-size: 0.6875rem;
 		font-weight: 700;
-		letter-spacing: 0.1em;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--ink-faint);
+		border: 1px solid var(--line-soft);
+		background: color-mix(in srgb, var(--bg-panel) 85%, #000);
+	}
+
+	.forum-thread__cat--setup {
+		color: #7dd3fc;
+		border-color: color-mix(in srgb, #38bdf8 35%, var(--line));
+		background: color-mix(in srgb, #38bdf8 12%, var(--bg-panel));
+	}
+
+	.forum-thread__cat--buying {
+		color: #6ee7b7;
+		border-color: color-mix(in srgb, #34d399 35%, var(--line));
+		background: color-mix(in srgb, #34d399 12%, var(--bg-panel));
+	}
+
+	.forum-thread__cat--features {
+		color: var(--magenta-soft);
+		border-color: color-mix(in srgb, var(--magenta) 35%, var(--line));
+		background: color-mix(in srgb, var(--magenta) 12%, var(--bg-panel));
+	}
+
+	.forum-thread__cat--gameplay {
+		color: #c4b5fd;
+		border-color: color-mix(in srgb, #a78bfa 35%, var(--line));
+		background: color-mix(in srgb, #a78bfa 12%, var(--bg-panel));
+	}
+
+	.forum-thread__cat--troubleshooting {
+		color: #fcd34d;
+		border-color: color-mix(in srgb, #fbbf24 35%, var(--line));
+		background: color-mix(in srgb, #fbbf24 12%, var(--bg-panel));
+	}
+
+	.forum-thread__cat--updates {
+		color: #fdba74;
+		border-color: color-mix(in srgb, #fb923c 35%, var(--line));
+		background: color-mix(in srgb, #fb923c 12%, var(--bg-panel));
 	}
 
 	.forum-thread h1 {

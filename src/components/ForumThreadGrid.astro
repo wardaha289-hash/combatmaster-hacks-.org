@@ -1,45 +1,184 @@
 ---
-import type { ForumThread } from '../data/forums';
-import { getForumPath } from '../data/forums';
+import type { ForumCategory, ForumThread } from '../data/forums';
+import { getForumPath, groupForumThreadsByCategory } from '../data/forums';
 import { getT } from '../i18n/server';
 import { defaultLocale, type LocaleCode } from '../data/i18n/locales';
 
 interface Props {
 	threads: readonly ForumThread[];
 	locale?: LocaleCode;
+	/** Group threads under category headings (forums index). */
+	grouped?: boolean;
+	/** Show jump links to each category (forums index). */
+	showCategoryNav?: boolean;
 }
 
-const { threads, locale = defaultLocale } = Astro.props;
+const { threads, locale = defaultLocale, grouped = false, showCategoryNav = false } = Astro.props;
 const t = getT(locale);
 
-const categoryLabel = (cat: ForumThread['category']) => t(`homeForums.categories.${cat}`);
+const categoryLabel = (cat: ForumCategory) => t(`homeForums.categories.${cat}`);
+const groups = grouped ? groupForumThreadsByCategory(threads) : null;
 ---
 
-<ul class="forum-grid">
-	{
-		threads.map((thread) => (
-			<li>
-				<a class="forum-card" href={getForumPath(thread.slug)}>
-					<span class={`forum-card__cat forum-card__cat--${thread.category}`}>
-						<span class="forum-card__icon" aria-hidden="true" />
-						{categoryLabel(thread.category)}
-					</span>
-					<h3 class="forum-card__title">{thread.title}</h3>
-					<p class="forum-card__desc">{thread.description}</p>
-					<span class="forum-card__cta">
-						{t('homeForums.readThread')} →
-					</span>
+{
+	showCategoryNav && groups && groups.length > 0 && (
+		<nav class="forum-cat-nav" aria-label={t('forums.categoryNav')}>
+			{groups.map(({ category }) => (
+				<a class={`forum-cat-nav__pill forum-cat-nav__pill--${category}`} href={`#forum-${category}`}>
+					{categoryLabel(category)}
 				</a>
-			</li>
-		))
-	}
-</ul>
+			))}
+		</nav>
+	)
+}
+
+{
+	grouped && groups ? (
+		<div class="forum-sections">
+			{groups.map(({ category, threads: sectionThreads }) => (
+				<section class="forum-section" id={`forum-${category}`} aria-labelledby={`forum-heading-${category}`}>
+					<header class="forum-section__head">
+						<h2 class={`forum-section__title forum-section__title--${category}`} id={`forum-heading-${category}`}>
+							<span class="forum-section__icon" aria-hidden="true" />
+							{categoryLabel(category)}
+						</h2>
+						<span class="forum-section__count">
+							{sectionThreads.length} {sectionThreads.length === 1 ? t('forums.threadSingular') : t('forums.threadPlural')}
+						</span>
+					</header>
+					<ul class="forum-grid">
+						{sectionThreads.map((thread) => (
+							<li>
+								<a class="forum-card" href={getForumPath(thread.slug)}>
+									<span class={`forum-card__cat forum-card__cat--${thread.category}`}>
+										{categoryLabel(thread.category)}
+									</span>
+									<h3 class="forum-card__title">{thread.title}</h3>
+									<p class="forum-card__desc">{thread.description}</p>
+									<span class="forum-card__cta">
+										{t('homeForums.readThread')} →
+									</span>
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+			))}
+		</div>
+	) : (
+		<ul class="forum-grid">
+			{threads.map((thread) => (
+				<li>
+					<a class="forum-card" href={getForumPath(thread.slug)}>
+						<span class={`forum-card__cat forum-card__cat--${thread.category}`}>
+							{categoryLabel(thread.category)}
+						</span>
+						<h3 class="forum-card__title">{thread.title}</h3>
+						<p class="forum-card__desc">{thread.description}</p>
+						<span class="forum-card__cta">
+							{t('homeForums.readThread')} →
+						</span>
+					</a>
+				</li>
+			))}
+		</ul>
+	)
+}
 
 <style>
+	.forum-cat-nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.forum-cat-nav__pill {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.35rem 0.75rem;
+		border-radius: 999px;
+		border: 1px solid var(--line);
+		background: color-mix(in srgb, var(--bg-elevated) 90%, #000);
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--ink-muted);
+		text-decoration: none;
+		transition:
+			border-color 0.2s ease,
+			color 0.2s ease,
+			background 0.2s ease;
+	}
+
+	.forum-cat-nav__pill:hover {
+		color: var(--ink);
+		border-color: color-mix(in srgb, var(--magenta) 40%, var(--line));
+	}
+
+	.forum-sections {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.forum-section__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 0.85rem;
+		padding-bottom: 0.65rem;
+		border-bottom: 1px solid var(--line-soft);
+	}
+
+	.forum-section__title {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		color: var(--ink);
+	}
+
+	.forum-section__icon {
+		width: 0.65rem;
+		height: 0.65rem;
+		border-radius: 0.15rem;
+		background: color-mix(in srgb, var(--magenta) 45%, var(--bg-panel));
+	}
+
+	.forum-section__title--setup .forum-section__icon {
+		background: #38bdf8;
+	}
+	.forum-section__title--buying .forum-section__icon {
+		background: #34d399;
+	}
+	.forum-section__title--features .forum-section__icon {
+		background: var(--magenta-soft);
+	}
+	.forum-section__title--gameplay .forum-section__icon {
+		background: #a78bfa;
+	}
+	.forum-section__title--troubleshooting .forum-section__icon {
+		background: #fbbf24;
+	}
+	.forum-section__title--updates .forum-section__icon {
+		background: #fb923c;
+	}
+
+	.forum-section__count {
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--ink-faint);
+		white-space: nowrap;
+	}
+
 	.forum-grid {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1rem;
+		gap: 0.85rem;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -49,10 +188,10 @@ const categoryLabel = (cat: ForumThread['category']) => t(`homeForums.categories
 		display: flex;
 		flex-direction: column;
 		min-height: 100%;
-		padding: 1.25rem 1.2rem 1.15rem;
+		padding: 1.1rem 1.05rem 1rem;
 		border: 1px solid var(--line);
-		border-radius: 0.85rem;
-		background: color-mix(in srgb, var(--bg-elevated) 92%, #000);
+		border-radius: 0.75rem;
+		background: color-mix(in srgb, var(--bg-elevated) 94%, #000);
 		text-decoration: none;
 		color: inherit;
 		transition:
@@ -62,62 +201,86 @@ const categoryLabel = (cat: ForumThread['category']) => t(`homeForums.categories
 	}
 
 	.forum-card:hover {
-		border-color: color-mix(in srgb, var(--magenta) 45%, var(--line));
-		box-shadow: 0 0 0 1px color-mix(in srgb, var(--magenta) 25%, transparent),
-			0 16px 40px rgba(0, 0, 0, 0.35);
-		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--magenta) 40%, var(--line));
+		box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+		transform: translateY(-1px);
 	}
 
 	.forum-card__cat {
 		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		margin-bottom: 0.85rem;
-		font-size: 0.6875rem;
+		align-self: flex-start;
+		margin-bottom: 0.7rem;
+		padding: 0.2rem 0.55rem;
+		border-radius: 999px;
+		font-size: 0.625rem;
 		font-weight: 700;
-		letter-spacing: 0.1em;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--ink-faint);
+		background: color-mix(in srgb, var(--bg-panel) 85%, #000);
+		border: 1px solid var(--line-soft);
 	}
 
-	.forum-card__icon {
-		width: 0.95rem;
-		height: 0.95rem;
-		border-radius: 0.2rem;
-		background: color-mix(in srgb, var(--magenta) 35%, var(--bg-panel));
-		border: 1px solid color-mix(in srgb, var(--magenta) 30%, var(--line));
-	}
-
-	.forum-card__cat--setup .forum-card__icon {
-		background: color-mix(in srgb, #38bdf8 25%, var(--bg-panel));
+	.forum-card__cat--setup {
+		color: #7dd3fc;
 		border-color: color-mix(in srgb, #38bdf8 35%, var(--line));
+		background: color-mix(in srgb, #38bdf8 12%, var(--bg-panel));
 	}
 
-	.forum-card__cat--instructions .forum-card__icon {
-		background: color-mix(in srgb, #fbbf24 25%, var(--bg-panel));
+	.forum-card__cat--buying {
+		color: #6ee7b7;
+		border-color: color-mix(in srgb, #34d399 35%, var(--line));
+		background: color-mix(in srgb, #34d399 12%, var(--bg-panel));
+	}
+
+	.forum-card__cat--features {
+		color: var(--magenta-soft);
+		border-color: color-mix(in srgb, var(--magenta) 35%, var(--line));
+		background: color-mix(in srgb, var(--magenta) 12%, var(--bg-panel));
+	}
+
+	.forum-card__cat--gameplay {
+		color: #c4b5fd;
+		border-color: color-mix(in srgb, #a78bfa 35%, var(--line));
+		background: color-mix(in srgb, #a78bfa 12%, var(--bg-panel));
+	}
+
+	.forum-card__cat--troubleshooting {
+		color: #fcd34d;
 		border-color: color-mix(in srgb, #fbbf24 35%, var(--line));
+		background: color-mix(in srgb, #fbbf24 12%, var(--bg-panel));
+	}
+
+	.forum-card__cat--updates {
+		color: #fdba74;
+		border-color: color-mix(in srgb, #fb923c 35%, var(--line));
+		background: color-mix(in srgb, #fb923c 12%, var(--bg-panel));
 	}
 
 	.forum-card__title {
-		margin: 0 0 0.65rem;
+		margin: 0 0 0.5rem;
 		font-family: var(--font-display);
-		font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+		font-size: clamp(0.98rem, 1.35vw, 1.1rem);
 		font-weight: 700;
-		line-height: 1.25;
+		line-height: 1.3;
 		letter-spacing: -0.02em;
 		color: var(--ink);
 	}
 
 	.forum-card__desc {
 		flex: 1;
-		margin: 0 0 1rem;
-		font-size: 0.875rem;
+		margin: 0 0 0.85rem;
+		font-size: 0.8125rem;
 		line-height: 1.55;
 		color: var(--ink-muted);
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 
 	.forum-card__cta {
-		font-size: 0.875rem;
+		font-size: 0.8125rem;
 		font-weight: 600;
 		color: var(--magenta-soft);
 	}
@@ -135,6 +298,11 @@ const categoryLabel = (cat: ForumThread['category']) => t(`homeForums.categories
 	@media (max-width: 560px) {
 		.forum-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.forum-section__head {
+			flex-direction: column;
+			align-items: flex-start;
 		}
 	}
 </style>
