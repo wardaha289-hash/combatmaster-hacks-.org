@@ -207,20 +207,32 @@
     "forums": "ฟอรัม"
   },
   "homeForums": {
-    "title": "Setup, Features & Configuration",
+    "title": "Guides & community threads",
     "readThread": "Read thread",
     "viewAll": "All forums",
     "categories": {
-      "features": "Features",
       "setup": "Setup",
-      "instructions": "Instructions"
+      "buying": "Buying",
+      "troubleshooting": "Troubleshooting",
+      "updates": "Updates & patches",
+      "gameplay": "Gameplay",
+      "features": "Features"
+    },
+    "categoryHints": {
+      "setup": "Install, performance, and first launch on Windows PC.",
+      "buying": "Plans, license delivery, and checkout help.",
+      "troubleshooting": "Fix loader errors, missing ESP, and overlay conflicts.",
+      "updates": "Patch day checklist and undetected status.",
+      "gameplay": "ESP, aimbot, and in-match settings for BR and TDM.",
+      "features": "Profiles, radar, recoil, and mod menu controls."
     }
   },
   "forums": {
-    "title": "Combat Master Cheats Forums | Setup & Features",
+    "title": "Combat Master Cheats Forums | Setup, Buying & Help",
     "eyebrow": "Forums",
-    "h1": "Setup, Features & Configuration",
-    "intro": "Combat Master cheats threads — ESP, radar, aimbot, recoil, and performance tips for Windows PC."
+    "h1": "Guides by topic",
+    "intro": "Setup, buying, troubleshooting, patch updates, gameplay tips, and feature controls — organized by what you need.",
+    "categoryNavAria": "Forum categories"
   },
   "images": {
     "hero": "Combat Master Hacks hero — ESP and aimbot overlay in Combat Master",
