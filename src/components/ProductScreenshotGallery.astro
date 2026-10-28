@@ -42,17 +42,9 @@ const first = images[0];
       size="sm"
       class="pointer-events-none absolute bottom-3 left-3 shadow-sm"
     >
-      Rust cheats gameplay
+      Combat Master gameplay
     </Badge>
   </div>
-  {
-    first && (first.caption || first.captionDesc) && (
-      <p class="mt-2 text-sm text-muted-foreground">
-        <strong class="text-foreground">{first.caption}</strong>
-        {first.captionDesc && ` — ${first.captionDesc}`}
-      </p>
-    )
-  }
 
   {
     hasThumbs && (

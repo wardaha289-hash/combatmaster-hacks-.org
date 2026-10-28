@@ -15,16 +15,16 @@ interface Props {
 }
 
 const defaultLinks: LinkItem[] = [
-  { href: ROUTES.products, label: 'Shop Rust cheat products' },
-  { href: '/products/rust-cheats/elite/', label: 'Buy Elite ESP & aimbot' },
-  { href: '/products/rust-cheats/utilities/', label: 'Compare utilities' },
-  { href: ROUTES.blog, label: 'Buy guides & tier tips' },
+  { href: ROUTES.products, label: 'Shop Combat Master cheats' },
+  { href: ROUTES.productsFull, label: 'Buy Full ESP & aimbot' },
+  { href: '/go/hwid-spoofer/', label: 'HWID Spoofer' },
+  { href: ROUTES.blog, label: 'Setup guides & patch tips' },
   { href: ROUTES.faq, label: 'Pre-purchase FAQ' },
   { href: ROUTES.reviews, label: 'Buyer reviews' },
 ];
 
-const { title = 'Shop Rust cheats & guides', links = defaultLinks } = Astro.props;
-const checkout = checkoutPath('rust');
+const { title = 'Shop Combat Master cheats & guides', links = defaultLinks } = Astro.props;
+const checkout = checkoutPath('combatMaster');
 const checkoutAttrs = externalLinkProps(checkout);
 ---
 

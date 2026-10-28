@@ -7,6 +7,7 @@ import {
   TWITTER_SITE,
   canonicalUrl,
   DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_ALT,
   DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_WIDTH,
   GA_MEASUREMENT_ID,
@@ -15,7 +16,6 @@ import {
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import JsonLd from '../components/JsonLd.astro';
-import responsiveDocumentCss from '../styles/responsive-document.css?raw';
 
 interface Props {
   title?: string;
@@ -33,7 +33,7 @@ const {
   title = t.site.title,
   description = t.site.description,
   ogImage = DEFAULT_OG_IMAGE,
-  ogImageAlt = title,
+  ogImageAlt = ogImage === DEFAULT_OG_IMAGE ? DEFAULT_OG_IMAGE_ALT : title,
   ogType = 'website',
   articlePublishedTime,
   articleModifiedTime,
@@ -63,13 +63,12 @@ const robotsContent = noindex
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style is:global set:html={responsiveDocumentCss}></style>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={t.site.name} />
     <meta name="robots" content={robotsContent} />
     <meta name="googlebot" content={robotsContent} />
-    <meta name="theme-color" content="#CE422B" />
+    <meta name="theme-color" content="#7F3DEE" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="en" href={canonical} />
     <link rel="alternate" hreflang="x-default" href={canonical} />
@@ -79,14 +78,13 @@ const robotsContent = noindex
       title={`${t.site.name} Blog RSS`}
       href={RSS_FEED_PATH}
     />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -123,16 +121,15 @@ const robotsContent = noindex
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://zadeyo.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Manrope:wght@400;500;600&display=optional"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Manrope:wght@400;500;600&display=optional"
         rel="stylesheet"
       />
     </noscript>
@@ -184,4 +181,3 @@ const robotsContent = noindex
     }
   </body>
 </html>
-

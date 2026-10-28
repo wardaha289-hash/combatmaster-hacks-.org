@@ -1,15 +1,15 @@
 import type { IconName } from '../components/icons/types';
 
 export const featureIcons: Record<string, IconName> = {
-  'Aimbot / Soft Aim': 'featureAimbot',
-  'Player ESP': 'featureEsp',
-  'Loot & Resource ESP': 'featureRadar',
-  'No Recoil / Spread': 'stepCrosshair',
-  'Utility Suite': 'featureUtilitySuite',
-  'Auto Farm Helpers': 'compareAutoFarm',
-  'Stream Proof': 'streamProof',
-  'FOV Hack': 'compareZoomHack',
-  'Cloud Config & Updates': 'compareCloudBackup',
+  'Player ESP & Wallhack': 'featureEsp',
+  'Soft Aim / Aimbot': 'featureAimbot',
+  '2D Radar / Minimap': 'featureRadar',
+  'Skeleton & Name Tags': 'skeletonEsp',
+  'In-Game Menu': 'featureUtilitySuite',
+  'Patch Updates': 'autoUpdates',
+  'Stream-Proof Overlay': 'streamProof',
+  'Windows PC Loader': 'compatWindows',
+  'Anti-Cheat Awareness': 'whyShield',
 };
 
 export const whyUsIcons: IconName[] = ['whyShield', 'whyUsers', 'whyMonitor', 'whyHeadphones'];
@@ -45,19 +45,14 @@ export const blogTagIcons: Record<string, IconName> = {
 export const heroStatusPills: { icon: IconName; label: string }[] = [
   { icon: 'espActive', label: 'ESP Active' },
   { icon: 'radarOnline', label: 'Radar Online' },
-  { icon: 'seasonBuild', label: 'Season Build' },
-  { icon: 'undetected', label: 'Undetected' },
+  { icon: 'undetected', label: 'Status Monitored' },
   { icon: 'softAim', label: 'Soft Aim Ready' },
-  { icon: 'noRecoil', label: 'No Recoil' },
   { icon: 'streamProof', label: 'Stream Proof' },
-  { icon: 'lootEsp', label: 'Loot ESP' },
   { icon: 'skeletonEsp', label: 'Skeleton ESP' },
-  { icon: 'uavRadar', label: 'UAV Radar' },
-  { icon: 'mapHack', label: 'Map Hack' },
-  { icon: 'support247', label: '24/7 Support' },
+  { icon: 'mapHack', label: 'Wallhack' },
+  { icon: 'support247', label: 'Email Support' },
   { icon: 'instantDelivery', label: 'Instant Delivery' },
-  { icon: 'rankedSafe', label: 'Wipe Ready' },
-  { icon: 'triggerBot', label: 'Trigger Bot' },
+  { icon: 'rankedSafe', label: 'Patch Ready' },
   { icon: 'boneSelect', label: 'Bone Select' },
   { icon: 'liveStatus', label: 'Live Status' },
   { icon: 'autoUpdates', label: 'Auto Updates' },
@@ -71,9 +66,7 @@ export const heroStatIcons: IconName[] = [
 ];
 
 export const cheatTierIcons: Record<string, IconName> = {
-  Lite: 'tierLite',
-  Pro: 'tierPro',
-  Elite: 'tierElite',
+  Full: 'tierPro',
 };
 
 export const productCategoryIcons: Record<string, IconName> = {

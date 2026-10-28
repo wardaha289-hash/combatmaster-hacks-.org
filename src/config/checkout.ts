@@ -1,97 +1,71 @@
 import { CHECKOUT_URLS } from './checkout-redirects.mjs';
 
-/** Zadeyo affiliate checkout destinations. */
+/**
+ * External checkout URLs — server-side redirect targets only (never use as visible href).
+ * Single primary checkout: https://zadeyo.com/go/QRH?to=%2Fproducts%2Fcombat-master
+ */
 export const CHECKOUT = CHECKOUT_URLS;
 
 export type CheckoutProduct = keyof typeof CHECKOUT;
 
 /** URL slug for /go/[slug]/ checkout redirect pages. */
 export const CHECKOUT_SLUGS: Record<CheckoutProduct, string> = {
-  rust: 'rust',
-  skinChanger: 'skin-changer',
+  combatMaster: 'combat-master',
   hwidSpoofer: 'hwid-spoofer',
-  ugc: 'ugc',
 };
 
 export const CHECKOUT_SLUG_TO_PRODUCT = Object.fromEntries(
   Object.entries(CHECKOUT_SLUGS).map(([product, slug]) => [slug, product as CheckoutProduct]),
 ) as Record<string, CheckoutProduct>;
 
-/** Zadeyo affiliate URL for visible “Get access” / buy CTAs (same tab — no target=_blank). */
-export function checkoutPath(product: CheckoutProduct = 'rust'): string {
-  return CHECKOUT[product];
-}
-
-/** Internal /go/* path (blog links, bookmarks); 302 to Zadeyo via public/_redirects. */
-export function checkoutRedirectPath(product: CheckoutProduct = 'rust'): string {
+/** Internal checkout path shown to users (hides external URL on hover). */
+export function checkoutPath(product: CheckoutProduct = 'combatMaster'): string {
   return `/go/${CHECKOUT_SLUGS[product]}/`;
 }
 
-/** Alias used by /go/[slug] static redirect pages. */
-export function checkoutExternalUrl(product: CheckoutProduct = 'rust'): string {
+/** External Zadeyo URL for /go/[slug]/ static redirect pages. */
+export function checkoutExternalUrl(product: CheckoutProduct = 'combatMaster'): string {
   return CHECKOUT[product];
 }
 
-/** Default product checkout redirect (replaces legacy Discord CTAs). */
-export const PRIMARY_CHECKOUT_PATH = checkoutPath('rust');
+/** Default product checkout redirect. */
+export const PRIMARY_CHECKOUT_PATH = checkoutPath('combatMaster');
+
+/** HWID Spoofer checkout redirect path. */
+export const HWID_SPOOFER_CHECKOUT_PATH = checkoutPath('hwidSpoofer');
 
 /** Map internal product slugs to checkout redirect paths. */
 export function checkoutForSlug(slug: string): string {
-  switch (slug) {
-    case 'unlock-all':
-      return checkoutPath('skinChanger');
-    case 'hwid-spoofer':
-      return checkoutPath('hwidSpoofer');
-    case 'ugc':
-    case 'account-recovery':
-      return checkoutPath('ugc');
-    case 'lite':
-    case 'pro':
-    case 'elite':
-    default:
-      return checkoutPath('rust');
+  if (slug === 'hwid-spoofer') {
+    return HWID_SPOOFER_CHECKOUT_PATH;
   }
+  return PRIMARY_CHECKOUT_PATH;
 }
 
 /** Resolve blog CTA or legacy href values to internal checkout paths. */
 export function resolveCheckoutHref(href: string): string {
-  const normalized = href.startsWith('/') ? href : `/${href}`;
-  const goMatch = normalized.match(/^\/go\/([^/]+)\/?$/);
-  if (goMatch) {
-    const product = CHECKOUT_SLUG_TO_PRODUCT[goMatch[1]];
-    if (product) return checkoutPath(product);
-  }
-
   if (!href.startsWith('http')) {
-    return normalized;
+    return href.startsWith('/') ? href : `/${href}`;
   }
 
   for (const [product, url] of Object.entries(CHECKOUT) as [CheckoutProduct, string][]) {
-    if (href === url || href.startsWith(`${url}&`) || href.startsWith(`${url}?`)) {
+    if (href === url || href.startsWith(`${url}?`) || href.startsWith(`${url}/`)) {
       return checkoutPath(product);
     }
   }
 
-  // Zadeyo affiliate / legacy product paths → internal checkout
-  if (href.includes('%2Fproducts%2Fhwid-spoofer') || href.includes('/products/hwid-spoofer')) {
-    return checkoutPath('hwidSpoofer');
-  }
-  if (href.includes('%2Fproducts%2Fskin-changer') || href.includes('/products/skin-changer')) {
-    return checkoutPath('skinChanger');
-  }
-  if (href.includes('%2Fproducts%2Fugc') || href.includes('/products/ugc')) {
-    return checkoutPath('ugc');
-  }
-  if (href.includes('%2Fproducts%2Fcloud-dma') || href.includes('/products/cloud-dma')) {
-    return checkoutPath('rust');
-  }
   if (
-    href.includes('%2Fproducts%2Fdota-2') ||
-    href.includes('/products/dota-2') ||
-    href.includes('%2Fproducts%2Frust') ||
-    href.includes('/products/rust')
+    href.includes('zadeyo.com') &&
+    (href.includes('hwid-spoofer') || href.includes('%2Fproducts%2Fhwid-spoofer'))
   ) {
-    return checkoutPath('rust');
+    return HWID_SPOOFER_CHECKOUT_PATH;
+  }
+
+  if (
+    href.includes('zadeyo.com') &&
+    (href.includes('combat-master') || href.includes('%2Fproducts%2Fcombat-master'))
+  ) {
+    return PRIMARY_CHECKOUT_PATH;
   }
 
   return href;

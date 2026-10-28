@@ -1,39 +1,34 @@
 === index.html ===
-Rust Cheats &amp; Hacks | ESP, Aimbot &amp; Radar
-Rust cheats for PC: player ESP, loot ESP, aimbot, no recoil, and stream-proof overlays updated every wipe at rust-cheats.net.
-https://rust-cheats.net/
+Combat Master Cheats & Hacks | Combat Master Hacks
+Combat Master cheats for Windows PC: player ESP, wallhack, soft aimbot and 2D radar with a stream-proof overlay.
+https://combatmasterhacks.org/
 
-=== products/rust-cheats/index.html ===
-Rust Elite Cheats &amp; Utility Products
-Elite rust cheats plus HWID spoofer, UGC tools, and Skin Changer utilities for Steam on rust-cheats.net.
-https://rust-cheats.net/products/rust-cheats/
+=== products/combat-master-cheats/index.html ===
+Combat Master Cheats Pricing | Combat Master Hacks
+Buy Combat Master cheats: ESP, wallhack, aimbot and radar for Windows PC. Monthly $35 or Lifetime $150.
+https://combatmasterhacks.org/products/combat-master-cheats/
 
-=== products/rust-cheats/elite/index.html ===
-Rust Elite Cheats | Full ESP &amp; Combat Suite
-Elite tier: player ESP, loot ESP, aimbot, no recoil, farm helpers, and priority EAC patch delivery.
-https://rust-cheats.net/products/rust-cheats/elite/
+=== products/combat-master-cheats/full/index.html ===
+Combat Master Full Cheat: ESP & Aimbot | CM Hacks
+Combat Master Full: player ESP, wallhack, soft aimbot, 2D radar and stream-proof overlay for Windows PC.
+https://combatmasterhacks.org/products/combat-master-cheats/full/
 
 === blog/index.html ===
-Rust Cheats Guides &amp; Patch Notes
-Setup guides, Lite vs Pro comparisons, EAC patch checklists, and PVP config tips for rust cheats.
-https://rust-cheats.net/blog/
-
-=== blog/rust-cheats-features-guide/index.html ===
-Rust cheats features: ESP, aimbot, radar and more | Rust Cheats
-Complete guide to our rust cheats—player ESP, loot ESP, aimbot, no recoil, FOV and stream proof.
-https://rust-cheats.net/blog/rust-cheats-features-guide/
+Combat Master Cheat Guides | Combat Master Hacks
+Combat Master cheat guides: ESP setup, aimbot tuning, radar tips and patch notes for Windows PC.
+https://combatmasterhacks.org/blog/
 
 === faq/index.html ===
-FAQ | Rust Cheats, Products &amp; Setup
-Answers on cheat tiers, ESP, aimbot, HWID tools, checkout, and blog guides at rust-cheats.net.
-https://rust-cheats.net/faq/
+Combat Master Cheats FAQ | Combat Master Hacks
+Answers on Combat Master ESP, aimbot, radar, anti-cheat risk, setup and checkout at combatmasterhacks.org.
+https://combatmasterhacks.org/faq/
 
 === support/index.html ===
-Support | Rust Cheats
-Get help with loader setup, HWID, and checkout for Rust cheat tiers and utilities.
-https://rust-cheats.net/support/
+Combat Master Hacks Support | Loader & Checkout Help
+Get help with Combat Master cheats: loader setup, Windows PC requirements and checkout.
+https://combatmasterhacks.org/support/
 
-=== 404.html ===
-Page not found | Rust Cheats
-The page you requested could not be found on rust-cheats.net.
-https://rust-cheats.net/404/
+=== 404/index.html ===
+Page not found | Combat Master Hacks
+The page you requested could not be found on combatmasterhacks.org.
+https://combatmasterhacks.org/404/

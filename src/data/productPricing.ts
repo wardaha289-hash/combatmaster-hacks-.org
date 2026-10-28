@@ -7,17 +7,13 @@ export interface ProductPlan {
   priceNote: string;
 }
 
+/** Combat Master Hacks pricing: Monthly $35, Lifetime $150. */
 const standardPlans: ProductPlan[] = [
   { id: 'monthly', label: 'Monthly', priceUsd: 35, priceNote: 'USD / month' },
   { id: 'lifetime', label: 'Lifetime', priceUsd: 150, priceNote: 'USD · one-time' },
 ];
 
-const ugcPlans: ProductPlan[] = [
-  { id: 'onetime', label: 'One-time access', priceUsd: 50, priceNote: 'USD · one-time' },
-];
-
-export function getProductPlans(productSlug: string): ProductPlan[] {
-  if (productSlug === 'ugc') return ugcPlans;
+export function getProductPlans(_productSlug: string): ProductPlan[] {
   return standardPlans;
 }
 

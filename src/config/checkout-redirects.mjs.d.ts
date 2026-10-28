@@ -1,8 +1,9 @@
+export declare const COMBAT_MASTER_CHECKOUT_URL: string;
+export declare const HWID_SPOOFER_CHECKOUT_URL: string;
+
 export declare const CHECKOUT_URLS: {
-  readonly rust: string;
-  readonly skinChanger: string;
+  readonly combatMaster: string;
   readonly hwidSpoofer: string;
-  readonly ugc: string;
 };
 
 export declare const CHECKOUT_PATH_REDIRECTS: ReadonlyMap<string, string>;

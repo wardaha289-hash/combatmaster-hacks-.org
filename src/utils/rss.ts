@@ -25,7 +25,7 @@ export function buildRssFeed(): string {
       <guid isPermaLink="true">${link}</guid>
       <description>${escapeXml(post.desc)}</description>
       <pubDate>${pubDate}</pubDate>
-      <enclosure url="${escapeXml(absoluteAssetUrl(post.image))}" type="image/png" />
+      <enclosure url="${escapeXml(absoluteAssetUrl(post.image))}" type="${post.image.endsWith(".png") ? "image/png" : "image/webp"}" />
     </item>`;
     })
     .join('');
@@ -33,9 +33,9 @@ export function buildRssFeed(): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rust Cheats Blog</title>
+    <title>Combat Master Hacks Blog</title>
     <link>${SITE_ORIGIN}/blog/</link>
-    <description>Rust cheat guides, wipe notes, and setup walkthroughs from rust-cheats.net.</description>
+    <description>Combat Master cheat guides, patch notes and setup walkthroughs from combatmasterhacks.org.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />

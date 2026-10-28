@@ -1,32 +1,29 @@
 {
-  "name": "Rust Cheats",
-  "short_name": "Rust Cheats",
-  "description": "Rust cheats with player ESP, loot ESP, aimbot, no recoil and stream-proof overlays for PC.",
+  "name": "Combat Master Hacks",
+  "short_name": "CombatMaster Hacks",
+  "description": "Combat Master cheats with player ESP, wallhack, soft aimbot and 2D radar for Windows PC.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#0a0d10",
-  "theme_color": "#ce422b",
+  "theme_color": "#7f3dee",
   "lang": "en-US",
   "icons": [
     {
-      "src": "/android-chrome-192.png",
+      "src": "/favicon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/android-chrome-512.png",
+      "src": "/favicon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon-32.png",
-      "sizes": "32x32",
       "type": "image/png"
     }
   ]

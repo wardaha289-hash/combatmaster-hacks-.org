@@ -21,8 +21,9 @@ const faqs = getAllFaqs();
   description={seo.description}
   jsonLd={[
     webPageSchema({
-      name: seo.title,
-      description: seo.description,
+      name: 'FAQ — Combat Master Cheats & Products',
+      description:
+        'Answers about Combat Master ESP, aimbot, radar, pricing, setup, blog guides and checkout at combatmasterhacks.org.',
       url: '/faq/',
     }),
     faqPageSchema(faqs.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), q: f.q, a: f.a.replace(/<[^>]+>/g, '') }))),
@@ -34,9 +35,9 @@ const faqs = getAllFaqs();
       <Breadcrumbs items={breadcrumbs} />
       <div class="mt-6">
         <SectionHeader
-          eyebrow="Rust help center"
-          title="Rust Cheats FAQ — Tiers, Checkout & EAC Risk"
-          desc="Everything about buying Lite, Pro and Elite Rust cheats, HWID tools, ban risk and delivery—in one place."
+          eyebrow="Help center"
+          title="FAQ for cheats, products & guides"
+          desc="Everything about Combat Master plans, ESP, aimbot, radar, safety and blog topics—in one place."
           titleId="faq-page-title"
         />
       </div>

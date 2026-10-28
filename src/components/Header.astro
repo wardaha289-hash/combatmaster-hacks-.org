@@ -20,13 +20,12 @@ import type { IconName } from './icons/types';
 const navIcons: Record<string, IconName> = {
   Products: 'navProducts',
   Blog: 'navBlog',
-  Reviews: 'users',
   Forum: 'messageCircle',
   FAQ: 'navFaq',
   Support: 'navSupport',
 };
 
-const purchaseUrl = checkoutPath('rust');
+const purchaseUrl = checkoutPath('combatMaster');
 const purchaseLink = externalLinkProps(purchaseUrl);
 ---
 
@@ -36,7 +35,7 @@ const purchaseLink = externalLinkProps(purchaseUrl);
       class="pointer-events-auto relative flex h-14 w-full max-w-6xl items-center justify-between gap-3 rounded-2xl border border-border/40 bg-background/35 px-4 text-foreground shadow-md shadow-black/5 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/25 dark:border-white/10 dark:bg-background/20 dark:shadow-black/25 sm:px-5 lg:h-[3.75rem]"
     >
     <a href="/" class="inline-flex min-w-0 items-center font-[family-name:var(--font-heading)] text-lg font-bold tracking-wide" aria-label={t.ui.homeAria}>
-      <span class="truncate" aria-hidden="true">Rust <span class="text-primary">Cheats</span></span>
+      <span class="truncate" aria-hidden="true">{t.site.name.replace(/ Hacks$/, '')} <span class="text-primary">Hacks</span></span>
     </a>
 
     <nav class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex" aria-label="Primary">
@@ -55,9 +54,13 @@ const purchaseLink = externalLinkProps(purchaseUrl);
 
     <div class="flex items-center gap-2">
       <div class="hidden items-center sm:flex">
-        <SlideRevealButton href={purchaseUrl} class="hidden lg:inline-flex" ariaLabel={t.ui.checkoutAria}>
-          {t.ui.browseCheats}
-        </SlideRevealButton>
+        <SlideRevealButton
+          href={purchaseUrl}
+          label={t.ui.browseCheats}
+          variant="primary"
+          class="hidden lg:inline-flex"
+          ariaLabel={t.ui.checkoutAria}
+        />
         <div class="nav-action-divider hidden items-center px-3 lg:flex" aria-hidden="true">
           <span class="block h-9 w-px bg-border"></span>
         </div>
@@ -100,7 +103,6 @@ const purchaseLink = externalLinkProps(purchaseUrl);
     </div>
   </div>
   <script>
-    // Keep burger morph in sync if the drawer runtime updates data-state on the trigger.
     const syncBurger = () => {
       document.querySelectorAll<HTMLElement>('[data-slot="sheet-trigger"]').forEach((trigger) => {
         const open = trigger.getAttribute('data-state') === 'open' || trigger.getAttribute('aria-expanded') === 'true';

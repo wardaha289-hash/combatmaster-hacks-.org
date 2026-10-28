@@ -1,7 +1,6 @@
 ---
 import Icon from './icons/Icon.astro';
 import { Button } from '@/components/starwind/button';
-import { externalLinkProps } from '../utils/externalLink';
 
 interface Props {
   title: string;
@@ -10,7 +9,6 @@ interface Props {
 }
 
 const { title, html, href } = Astro.props;
-const link = externalLinkProps(href);
 ---
 
 <aside class="blog-post-cta not-prose my-8" aria-label={title}>
@@ -20,8 +18,8 @@ const link = externalLinkProps(href);
   <div class="blog-post-cta__body">
     <h3 class="blog-post-cta__title">{title}</h3>
     <div class="blog-post-cta__text" set:html={html} />
-    <Button as="a" href={href} variant="primary" size="sm" class="blog-post-cta__btn justify-start" {...link}>
-      Get access
+    <Button as="a" href={href} variant="primary" size="sm" class="blog-post-cta__btn justify-start">
+      Buy now
       <Icon name="arrowRight" size={16} />
     </Button>
   </div>

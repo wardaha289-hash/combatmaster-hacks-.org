@@ -11,16 +11,19 @@ export interface Review {
   verified: boolean;
 }
 
+const fullProduct = 'Combat Master Full';
+const fullHref = '/products/combat-master-cheats/full/';
+
 export const reviews: Review[] = [
   {
     id: 'r1',
     name: 'Marcus K.',
-    handle: 'wipe_scout',
+    handle: 'br_squad',
     rating: 5,
-    product: 'Rust Elite',
-    productHref: '/products/rust-cheats/elite/',
-    title: 'Elite ESP + farm helpers on Official',
-    body: 'Bought Elite before wipe. Player ESP and loot markers made monument runs cleaner, and Auto Farm Helpers cut grind time. Portal presets loaded fast—Discord helped me tune aimbot smoothing on day one.',
+    product: fullProduct,
+    productHref: fullHref,
+    title: 'ESP and radar for Battle Royale squads',
+    body: 'Player ESP and the 2D radar made callouts way cleaner in BR. Distance filters took one session to tune, then flanks were obvious. Loader setup matched the guide on combatmasterhacks.org.',
     date: 'Sep 12, 2026',
     verified: true,
   },
@@ -29,117 +32,98 @@ export const reviews: Review[] = [
     name: 'Elena R.',
     handle: 'stream_safe',
     rating: 5,
-    product: 'Rust Elite',
-    productHref: '/products/rust-cheats/elite/',
-    title: 'Stream-proof overlays for creators',
-    body: 'Needed stream-proof so OBS never shows ESP. Worked on game capture after the checklist in the blog. Soft aim stays human with the default FOV circle—no snap reports from my duo.',
+    product: fullProduct,
+    productHref: fullHref,
+    title: 'Stream-proof overlay works',
+    body: 'Needed stream-proof so capture software stays clean. ESP stayed on my monitor only after the checklist. Soft aim defaults feel human with the FOV circle—not snap city.',
     date: 'Sep 4, 2026',
     verified: true,
   },
   {
     id: 'r3',
     name: 'Jordan P.',
-    handle: 'ak_main',
+    handle: 'aim_tune',
     rating: 5,
-    product: 'Rust Elite',
-    productHref: '/products/rust-cheats/elite/',
-    title: 'No recoil profiles for AK / LR-300',
-    body: 'Per-weapon recoil profiles saved my sprays on Community. Started conservative like the guide said, then tightened. Patch after Thursday update landed before I joined a server again.',
+    product: fullProduct,
+    productHref: fullHref,
+    title: 'Soft aim profiles for AR fights',
+    body: 'Bone priority and smoothing sliders helped in quick-play. Started conservative like the FAQ said, then tightened. Patch note landed before my next queue after a game update.',
     date: 'Aug 28, 2026',
     verified: true,
   },
   {
     id: 'r4',
     name: 'Sam T.',
-    handle: 'hwid_reset',
+    handle: 'wall_read',
     rating: 5,
-    product: 'HWID Spoofer',
-    productHref: '/products/rust-cheats/hwid-spoofer/',
-    title: 'HWID Spoofer after an EAC hardware flag',
-    body: 'Fresh accounts died instantly on one PC. Followed the restore-point checklist, spoofed, cold reboot, then verified IDs. Got back into Rust the same night—support walked me through Discord.',
+    product: fullProduct,
+    productHref: fullHref,
+    title: 'Wallhack readability in close fights',
+    body: 'Wallhack outlines stay readable when three players push one lane. Toggle ESP categories so the screen stays clean. Support replied same day by email with a preset file.',
     date: 'Aug 21, 2026',
     verified: true,
   },
   {
     id: 'r5',
     name: 'Chris V.',
-    handle: 'loot_radar',
+    handle: 'radar_main',
     rating: 4,
-    product: 'Rust Elite',
-    productHref: '/products/rust-cheats/elite/',
-    title: 'Loot ESP & radar for roams',
-    body: 'Radar + loot ESP is what I use most. Distance filters took a session to dial in, but once set I stop walking into sleepers. Would love more monument presets out of the box—still a solid buy.',
+    product: fullProduct,
+    productHref: fullHref,
+    title: 'Radar + ESP combo',
+    body: 'Radar plus ESP is what I use most. Would like more preset profiles out of the box, but monthly plan was worth it for the first weekend alone.',
     date: 'Aug 15, 2026',
     verified: true,
   },
   {
     id: 'r6',
     name: 'Priya N.',
-    handle: 'skin_preview',
+    handle: 'lifetime_buy',
     rating: 5,
-    product: 'Skin Changer',
-    productHref: '/products/rust-cheats/unlock-all/',
-    title: 'Skin Changer for loadout previews',
-    body: 'Bought Unlock All standalone to preview weapon and clothing skins locally. Other players still see my real inventory, which matches the product page. Fast checkout and portal download.',
-    date: 'Aug 9, 2026',
+    product: fullProduct,
+    productHref: fullHref,
+    title: 'Lifetime license delivery',
+    body: 'Checkout through the site was instant. Lifetime key arrived by email with clear activation steps. Windows 11 install took about ten minutes following the support page.',
+    date: 'Aug 8, 2026',
     verified: true,
   },
   {
     id: 'r7',
-    name: 'Diego M.',
-    handle: 'ugc_help',
-    rating: 4,
-    product: 'UGC Recovery',
-    productHref: '/products/rust-cheats/ugc/',
-    title: 'UGC appeal workspace after a Steam hold',
-    body: 'UGC organized my ban docs and follow-ups—no magic unban, which they are honest about. Status tracking made Discord tickets clearer. Pairing with HWID tips from the blog helped decide next steps.',
-    date: 'Aug 2, 2026',
+    name: 'Alex D.',
+    handle: 'patch_day',
+    rating: 5,
+    product: fullProduct,
+    productHref: fullHref,
+    title: 'Loader updates after patches',
+    body: 'After an anti-cheat patch I checked status before launching. New build was posted within a day. ESP and aimbot modules came back online without redoing my whole config.',
+    date: 'Jul 30, 2026',
     verified: true,
   },
   {
     id: 'r8',
-    name: 'Alex W.',
-    handle: 'patch_day',
+    name: 'Taylor M.',
+    handle: 'new_buyer',
     rating: 5,
-    product: 'Rust Elite',
-    productHref: '/products/rust-cheats/elite/',
-    title: 'Loader updates after EAC patches',
-    body: 'Status banner + Discord #status kept me from launching mid-patch. New loader build showed up within the window they advertise. Checkout to first raid was under an hour with portal presets.',
-    date: 'Jul 26, 2026',
-    verified: true,
-  },
-  {
-    id: 'r9',
-    name: 'Nina L.',
-    handle: 'duo_main',
-    rating: 5,
-    product: 'Rust Elite',
-    productHref: '/products/rust-cheats/elite/',
-    title: 'Soft aim that does not look obvious',
-    body: 'Bone select and smoothing defaults feel fair for Official. Duo noticed fewer wild snaps versus free cheats we tried years ago. Support answered a loader question same evening.',
-    date: 'Jul 18, 2026',
+    product: fullProduct,
+    productHref: fullHref,
+    title: 'First cheat purchase — smooth setup',
+    body: 'First time buying Combat Master cheats. FAQ answered delivery and refund questions. The Full package includes everything advertised—ESP, wallhack, aimbot and radar in one license.',
+    date: 'Jul 22, 2026',
     verified: true,
   },
 ];
 
 export function getReviewStats(items: Review[] = reviews) {
   const count = items.length;
-  const sum = items.reduce((acc, r) => acc + r.rating, 0);
-  const average = count ? Math.round((sum / count) * 10) / 10 : 0;
-  const fiveStar = items.filter((r) => r.rating === 5).length;
-  return { count, average, fiveStar, verified: items.filter((r) => r.verified).length };
+  const average = count ? items.reduce((sum, r) => sum + r.rating, 0) / count : 0;
+  return { count, average: Math.round(average * 10) / 10 };
 }
 
 export function getRatingBreakdown(items: Review[] = reviews) {
-  const total = items.length || 1;
-  return ([5, 4, 3, 2, 1] as const).map((stars) => {
-    const count = items.filter((r) => r.rating === stars).length;
-    return {
-      stars,
-      count,
-      pct: Math.round((count / total) * 100),
-    };
-  });
+  return [5, 4, 3, 2, 1].map((stars) => ({
+    stars,
+    count: items.filter((r) => r.rating === stars).length,
+  }));
 }
 
 export function getReviewProducts(items: Review[] = reviews) {

@@ -4,11 +4,13 @@ import { getPageSeoEntry } from './pageSeo';
 
 export const SITE_ORIGIN = `https://${t.site.domain}`;
 
-export const DEFAULT_OG_IMAGE = '/images/gameplay/rust-map-hack.png';
+export const DEFAULT_OG_IMAGE = '/images/gameplay/combat-master-gameplay-wallhack-esp.png';
+export const DEFAULT_OG_IMAGE_ALT =
+  'Combat Master gameplay screenshot showing wallhack ESP, aimbot FOV circle and enemy distance tags through shipping containers';
 
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
 
-/** @example @rustcheats */
+/** @example @combatmasterhacks */
 export const TWITTER_SITE = import.meta.env.PUBLIC_TWITTER_SITE as string | undefined;
 
 export const TWITTER_CREATOR = import.meta.env.PUBLIC_TWITTER_CREATOR as string | undefined;
@@ -44,7 +46,8 @@ export function resolvePageSeo(pathname: string): { title: string; description: 
   return { title: t.site.title, description: t.site.description };
 }
 
-export function pageTitle(keyword: string, brand = t.site.name): string {
+/** `{keyword} | Combat Master Hacks`, trimmed to ~60 characters. */
+export function pageTitle(keyword: string, brand = 'Combat Master Hacks'): string {
   const suffix = ` | ${brand}`;
   const max = 60;
   if (`${keyword}${suffix}`.length <= max) return `${keyword}${suffix}`;
@@ -52,8 +55,8 @@ export function pageTitle(keyword: string, brand = t.site.name): string {
   return `${trimmed}${suffix}`;
 }
 
-export const DEFAULT_OG_IMAGE_WIDTH = 1200;
-export const DEFAULT_OG_IMAGE_HEIGHT = 630;
+export const DEFAULT_OG_IMAGE_WIDTH = 1024;
+export const DEFAULT_OG_IMAGE_HEIGHT = 437;
 
 export const RSS_FEED_PATH = '/rss.xml';
 

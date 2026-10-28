@@ -30,9 +30,9 @@ const initials = (name: string) =>
 const reviewSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: 'Rust Cheats',
+  name: 'Combat Master Hacks',
   description: seo.description,
-  brand: { '@type': 'Brand', name: 'Rust Cheats' },
+  brand: { '@type': 'Brand', name: 'Combat Master Hacks' },
   url: canonicalUrl('/reviews/'),
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -62,7 +62,7 @@ const reviewSchema = {
   description={seo.description}
   jsonLd={[
     collectionPageSchema({
-      name: 'Rust Cheats Customer Reviews',
+      name: 'Combat Master Hacks Customer Reviews',
       description: seo.description,
       url: '/reviews/',
     }),
@@ -78,10 +78,10 @@ const reviewSchema = {
           <div class="reviews-hero__copy">
             <p class="section-header__eyebrow">Verified buyer signal</p>
             <h1 id="reviews-page-title" class="section-header__title">
-              Rust Cheats Reviews — ESP, Aimbot & Spoofer
+              Combat Master Hacks Reviews — ESP, Aimbot & Radar
             </h1>
             <p class="section-header__subtitle mt-3 max-w-xl">
-              Real purchase feedback on Elite combat tools, HWID Spoofer, UGC recovery and Skin Changer—before you checkout.
+              Real purchase feedback on Combat Master Full — player ESP, wallhack, soft aim and radar before you checkout.
             </p>
 
             <div class="reviews-filters" role="group" aria-label="Filter reviews by product">
@@ -212,10 +212,10 @@ const reviewSchema = {
         <aside class="reviews-side">
           <div class="reviews-side__card">
             <h2>Shop after you read</h2>
-            <p>Compare Elite ESP/aimbot and utility tools, then checkout for portal access and Discord support.</p>
+            <p>Compare Combat Master Full — ESP, wallhack, soft aim and radar — then checkout for instant loader access.</p>
             <div class="reviews-side__actions">
-              <Button as="a" href={ROUTES.productsElite} variant="primary" class="w-full justify-center">
-                Buy Elite
+              <Button as="a" href={ROUTES.productsFull} variant="primary" class="w-full justify-center">
+                Get Combat Master Full
                 <Icon name="arrowRight" size={16} />
               </Button>
               <Button as="a" href={ROUTES.products} variant="outline" class="w-full justify-center">
@@ -225,7 +225,7 @@ const reviewSchema = {
           </div>
           <div class="reviews-side__card">
             <h2>Need setup help?</h2>
-            <p>Loader errors and HWID questions go through Discord tickets—include your order ID.</p>
+            <p>Loader errors and HWID questions go to support@combatmasterhacks.org — include your order email and a screenshot if you can.</p>
             <div class="reviews-side__actions">
               <Button as="a" href={ROUTES.support} variant="outline" class="w-full justify-center">
                 Open support

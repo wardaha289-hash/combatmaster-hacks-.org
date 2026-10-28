@@ -1,6 +1,8 @@
 /**
- * Unique titles/descriptions per route — all Rust-focused, no duplicate SERP copy.
- * Titles ~50–60 chars; descriptions ~140–155 chars.
+ * Central titles/descriptions for high-traffic routes.
+ * After Search Console shows impressions, edit the matching path here and redeploy.
+ *
+ * Rules: title ≤ 60 chars, description ≤ 160 chars, primary keyword near the front.
  */
 
 export interface PageSeoEntry {
@@ -10,79 +12,60 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    title: 'Buy Rust Cheats 2026 | Undetected ESP & Aimbot',
+    // gscNote: Keep primary keyword "combat master cheats" near front; trim if title truncates in SERP.
+    title: 'Combat Master Cheats & Hacks | Combat Master Hacks',
     description:
-      'Shop undetected Rust cheats for Steam PC—player ESP, loot ESP, soft aim, no recoil and stream-proof overlays. Compare Lite, Pro and Elite at rust-cheats.net.',
+      'Combat Master cheats for Windows PC: player ESP, wallhack, soft aimbot and 2D radar with a stream-proof overlay. Get Combat Master Hacks today.',
   },
-  '/products/rust-cheats/': {
-    title: 'Shop Rust Cheat Products | Lite, Pro, Elite & Tools',
+  '/products/combat-master-cheats/': {
+    title: 'Combat Master Cheats Pricing | Combat Master Hacks',
     description:
-      'Browse Rust cheat tiers and utilities—Elite ESP and aimbot, HWID Spoofer, UGC recovery and Skin Changer. Compare modules, read guides, then checkout securely.',
+      'Buy Combat Master cheats: ESP, wallhack, aimbot and radar for Windows PC. Monthly $35 or Lifetime $150 with patch updates from Combat Master Hacks.',
   },
-  '/products/rust-cheats/elite/': {
-    title: 'Rust Elite Cheats for Sale | ESP, Aimbot, Farm Bot',
+  '/products/combat-master-cheats/full/': {
+    title: 'Combat Master Full Cheat: ESP & Aimbot | CM Hacks',
     description:
-      'Purchase Rust Elite: skeleton ESP, aimbot, no recoil, auto farm helpers, Skin Changer and priority EAC patch queue for Official and Community.',
-  },
-  '/products/rust-cheats/hwid-spoofer/': {
-    title: 'Rust HWID Spoofer for Sale | Reset After EAC Ban',
-    description:
-      'Buy a Rust HWID Spoofer to rotate disk, MAC and GPU IDs after an Easy Anti-Cheat hardware flag. Includes setup guide and Discord support.',
-  },
-  '/products/rust-cheats/ugc/': {
-    title: 'Rust UGC Recovery Tool | Steam & Ban Appeals',
-    description:
-      'Buy Rust UGC appeal tools for Steam holds, EAC bans and server restrictions. Document cases, track status and restore account access faster.',
-  },
-  '/products/rust-cheats/unlock-all/': {
-    title: 'Rust Skin Changer for Sale | Unlock All Cosmetics',
-    description:
-      'Buy Rust Skin Changer / Unlock All to preview weapon and clothing skins locally on PC—client-side cosmetics without Steam market purchases.',
-  },
-  '/products/rust-cheats/utilities/': {
-    title: 'Rust Cheat Utilities Compared | Spoofer, UGC, Skins',
-    description:
-      'Compare Rust HWID Spoofer, UGC appeal tools and Skin Changer side by side. See best use cases, feature lists and product pages before you buy at rust-cheats.net.',
+      'Combat Master Full: player ESP, wallhack, soft aimbot, 2D radar and stream-proof overlay for Windows PC. Monthly $35 or Lifetime $150 at Combat Master Hacks.',
   },
   '/blog/': {
-    title: 'Rust Cheat Buy Guides | Tier Picks & Checkout Tips',
+    title: 'Combat Master Cheat Guides | Combat Master Hacks',
     description:
-      'Read Rust cheat buy guides: Lite vs Pro vs Elite, ESP and aimbot features, HWID after bans, and step-by-step checkout on rust-cheats.net.',
+      'Combat Master cheat guides: ESP and wallhack setup, aimbot tuning, radar tips, stream-proof overlay and patch notes for Windows PC from Combat Master Hacks.',
   },
   '/forum/': {
-    title: 'Rust Cheats Buyer Forum | ESP, Aimbot & Spoofer Q&A',
+    title: 'Combat Master Community Forum | Combat Master Hacks',
     description:
-      'Ask Rust cheat product questions before you buy—ESP setups, aimbot tiers, HWID Spoofer, wipe readiness and which plan fits your playstyle.',
-  },
-  '/reviews/': {
-    title: 'Rust Cheats Reviews | Buyer Ratings & Feedback',
-    description:
-      'Read verified Rust Cheats reviews for Elite ESP and aimbot, HWID Spoofer, UGC recovery and Skin Changer—real buyer ratings before you checkout.',
+      'Join Combat Master players to discuss ESP, aimbot and radar settings, loadouts, patch changes, guides and community tips on Windows PC at Combat Master Hacks.',
   },
   '/faq/': {
-    title: 'Rust Cheats FAQ | How to Buy, Tiers & EAC Risk',
+    title: 'Combat Master Cheats FAQ | Combat Master Hacks',
     description:
-      'Frequently asked questions about buying Rust cheats: supported Windows/Steam setup, Lite Pro Elite differences, ban risk and how checkout works.',
+      'Answers on Combat Master ESP, aimbot, radar, anti-cheat risk, Windows PC setup, pricing and checkout for Combat Master Hacks at combatmasterhacks.org.',
   },
   '/terms/': {
-    title: 'Rust Cheats Terms of Sale | License & Refunds',
+    title: 'Terms & Conditions | Combat Master Hacks',
     description:
-      'Legal terms for purchasing Rust cheat licenses on rust-cheats.net—delivery, personal-use limits, refunds, EAC risk and acceptable product use.',
-  },
-  '/about/': {
-    title: 'About Rust Cheats Store | Undetected PC Hacks',
-    description:
-      'Learn who runs rust-cheats.net, what Rust cheat tiers and utilities we sell, how wipe-day updates work, and how Discord support helps after checkout on Steam PC.',
-  },
-  '/support/': {
-    title: 'Rust Cheats Discord Support | Loader Help Tickets',
-    description:
-      'Open a Discord ticket for Rust loader errors, HWID Spoofer setup, Skin Changer issues or checkout questions. Include your order ID, issue type and screenshots.',
+      'Purchase terms, license use and refund policy for Combat Master cheats sold through combatmasterhacks.org. Read before you buy Combat Master Hacks.',
   },
   '/privacy/': {
-    title: 'Rust Cheats Privacy Policy | Data & Cookies',
+    title: 'Privacy Policy | Combat Master Hacks',
     description:
-      'Privacy policy for rust-cheats.net: analytics cookies, checkout partners, Discord ticket data, retention and your rights when browsing or buying Rust cheat products.',
+      'How combatmasterhacks.org uses analytics, cookies and contact data when you browse Combat Master cheats, read guides or contact Combat Master Hacks support.',
+  },
+  '/about/': {
+    title: 'About Combat Master Hacks | Combat Master Cheats',
+    description:
+      'What Combat Master Hacks publishes: Combat Master cheats with ESP, aimbot and radar for Windows PC, setup guides and status notes at combatmasterhacks.org.',
+  },
+  '/support/': {
+    title: 'Combat Master Hacks Support | Loader & Checkout Help',
+    description:
+      'Get help with Combat Master cheats: loader setup, Windows PC requirements, ESP and aimbot questions and checkout. Email support@combatmasterhacks.org.',
+  },
+  '/reviews/': {
+    title: 'Combat Master Hacks Reviews | Buyer Feedback',
+    description:
+      'Buyer reviews for Combat Master cheats — ESP, soft aim, radar and patch updates on Windows PC. Real feedback from Combat Master Hacks customers.',
   },
 };
 

@@ -4,18 +4,22 @@ import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
 export default defineConfig({
-  site: 'https://rust-cheats.net',
+  site: 'https://combatmasterhacks.org',
   trailingSlash: 'always',
   redirects: {
-    '/cheats/': '/products/rust-cheats/',
-    '/cheats/lite/': '/products/rust-cheats/',
-    '/cheats/pro/': '/products/rust-cheats/',
-    '/cheats/elite/': '/products/rust-cheats/elite/',
-    '/cheats/compare/': '/blog/lite-vs-pro/',
+    '/cheats/': '/products/combat-master-cheats/',
+    '/cheats/lite/': '/products/combat-master-cheats/',
+    '/cheats/pro/': '/products/combat-master-cheats/full/',
+    '/cheats/elite/': '/products/combat-master-cheats/full/',
+    '/cheats/compare/': '/blog/combat-master-esp-aimbot-radar-guide/',
+    '/products/combat-master-cheats/utilities/': '/products/combat-master-cheats/',
+    '/products/rust-cheats/': '/products/combat-master-cheats/',
+    '/products/rust-cheats/elite/': '/products/combat-master-cheats/full/',
+    '/products/rust-cheats/utilities/': '/products/combat-master-cheats/',
+    '/products/dota-2-cheats/': '/products/combat-master-cheats/',
+    '/products/dota-2-cheats/elite/': '/products/combat-master-cheats/full/',
+    '/products/dota-2-cheats/utilities/': '/products/combat-master-cheats/',
     '/contact/': '/support/',
-    '/products/dota-2-cheats/': '/products/rust-cheats/',
-    '/products/dota-2-cheats/elite/': '/products/rust-cheats/elite/',
-    '/products/dota-2-cheats/utilities/': '/products/rust-cheats/utilities/',
   },
   compressHTML: true,
   prefetch: {
@@ -37,17 +41,10 @@ export default defineConfig({
       cssMinify: true,
       minify: 'esbuild',
       target: 'es2022',
-      cssCodeSplit: true,
       modulePreload: { polyfill: false },
-      rollupOptions: {
-        output: {
-          manualChunks: undefined,
-        },
-      },
     },
   },
   build: {
-    inlineStylesheets: 'auto',
-    assets: '_astro',
+    inlineStylesheets: 'always',
   },
 });
